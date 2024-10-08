@@ -47,6 +47,7 @@ services:
       - microservice1
       - microservice2
       - microservice3
+    command: ["./wait-for-it.sh", "microservice1:3000", "--", "./wait-for-it.sh", "microservice2:8000", "--", "./wait-for-it.sh", "microservice3:8080", "--", "npm", "start"]
 
 networks:
   mynetwork:
