@@ -40,9 +40,9 @@ services:
     networks:
       - mynetwork
     environment:
-      - PRODUCTOS_SERVICE_URL=http://microservice2
-      - PEDIDOS_SERVICE_URL=http://microservice3
-      - RESENIAS_SERVICE_URL=http://microservice1
+      - PRODUCTOS_SERVICE_URL=http://microservice2:8000
+      - PEDIDOS_SERVICE_URL=http://microservice3:8080
+      - RESENIAS_SERVICE_URL=http://microservice1:3000
     depends_on:
       - microservice1
       - microservice2
