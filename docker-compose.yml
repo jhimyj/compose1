@@ -34,7 +34,7 @@ services:
       - MONGODB_URI=mongodb://172.31.38.207/mydb
 
   orchestrator:
-    image: jhimyj/api-orquestadora:latest
+    image: jhimyj/orquestadora:latest
     ports:
       - "5000:5000"
     networks:
