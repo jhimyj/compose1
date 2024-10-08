@@ -8,11 +8,11 @@ services:
     networks:
       - mynetwork
     environment:
-      - DB_USER=postgres
-      - DB_PASSWORD=123
+      - DB_USER=user
+      - DB_PASSWORD=password
       - DB_HOST=52.200.211.135
       - DB_PORT=5432
-      - DB_NAME=postgres
+      - DB_NAME=mydb
       - DB_DIALECT=postgres
 
   microservice2:
@@ -22,7 +22,7 @@ services:
     networks:
       - mynetwork
     environment:
-      - DATABASE_URL=mysql+pymysql://root:utec@52.200.211.135:3306/mydb
+      - DATABASE_URL=mysql+pymysql://user:password@52.200.211.135:3306/mydb
 
   microservice3:
     image: jhimyj/api-pedidos:latest
