@@ -2,7 +2,7 @@ version: '3'
 
 services:
   microservice1:
-    image: jhimyj/api-resenia:latest
+    image: jhimyj/api-resenias1:latest
     ports:
       - "3000:3000"
     networks:
