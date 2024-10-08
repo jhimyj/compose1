@@ -31,7 +31,7 @@ services:
     networks:
       - mynetwork
     environment:
-      - MONGODB_URI=mongodb://52.200.211.135
+      - MONGODB_URI=mongodb://172.31.38.207/mydb
 
   orchestrator:
     image: jhimyj/api-orquestadora:latest
