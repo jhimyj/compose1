@@ -16,7 +16,7 @@ services:
       - DB_DIALECT=postgres
 
   microservice2:
-    image: jhimyj/api-productos:latest
+    image: jhimyj/api-productos
     ports:
       - "8000:8000"
     networks:
