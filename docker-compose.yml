@@ -22,7 +22,7 @@ services:
     networks:
       - mynetwork
     environment:
-      - DATABASE_URL=mysql+pymysql://root:utec@52.200.211.135:3306/mydb
+      - DATABASE_URL=mysql+pymysql://user:password@52.200.211.135:3306/mydb
 
   microservice3:
     image: jhimyj/api-pedidos:latest
