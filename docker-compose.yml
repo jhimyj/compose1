@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  # Microservicio 1 - Python (con MySQL remoto)
+  microservice1:
+    image: jhimyj/api-resenia:latest  # Cambia 'tu-usuario-docker-hub' por tu nombre de usuario en Docker Hub
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=123
+      - DB_HOST=52.200.211.135
+      - DB_PORT=5432
+      - DB_NAME=postgres
+      - DB_DIALECT=postgres
+
+  # Microservicio 2 - Node.js (con PostgreSQL remoto)
+  microservice2:
+    image: jhimyj/api-productos:latest  # Cambia 'tu-usuario-docker-hub' por tu nombre de usuario en Docker Hub
+    ports:
+      - "8000:8000"
+    networks:
+      - mynetwork
+    environment:
+      - DATABASE_URL=postgresql://user:password@52.200.211.135:5432/mydb  # Configuración para conexión PostgreSQL
+
+  # Microservicio 3 - Java (con MongoDB remoto)
+  microservice3:
+    image: jhimyj/api-pedidos:latest  # Cambia 'tu-usuario-docker-hub' por tu nombre de usuario en Docker Hub
+    ports:
+      - "8000:8000"
+    networks:
+      - mynetwork
+    environment:
+      - MONGODB_URI=mongodb://user:password@52.200.211.135:27017/mydb  # Configuración para MongoDB
+
+  # Orquestador
+  orchestrator:
+    image: jhimyj/api-orquestadora:latest  # Cambia 'tu-usuario-docker-hub' por tu nombre de usuario en Docker Hub
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+    environment:
+      - PRODUCTOS_SERVICE_URL=http://microservice2:5001  
+      - PEDIDOS_SERVICE_URL=http://microservice3:5002
+      - RESENIAS_SERVICE_URL=http://microservice1:5003
+
+networks:
+  mynetwork:
+    driver: bridge
+
